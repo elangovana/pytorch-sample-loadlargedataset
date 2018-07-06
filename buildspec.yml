@@ -19,8 +19,10 @@ phases:
     # Create the build package
       - echo creating package
       - mkdir buildoutput
-    # The requirements build for production
+    # The requirements build for lambda
       - pip install -r source/requirements_lambda.txt  -t source
+    # Install torch without cuda on linux
+      - pip install http://download.pytorch.org/whl/cpu/torch-0.4.0-cp36-cp36m-linux_x86_64.whl -t source
       - cd source && zip -r ../buildoutput/pytorchzip_lambda_deployment_package.zip . -x test* && cd ..
 
 
