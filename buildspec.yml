@@ -10,7 +10,7 @@ phases:
       - pip install pytest
   build:
     commands:
-      # Build and run tests
+      # Build and run tests to make sure all ok
       - pip install -r source/requirements_dev.txt
       - pytest
 
@@ -19,6 +19,7 @@ phases:
     # Create the build package
       - echo creating package
       - mkdir buildoutput
+    # The requirements build for production
       - pip install -r source/requirements_prod.txt  -t source
       - cd source && zip -r ../buildoutput/pytorchzip_deployment_package.zip . && cd ..
 
