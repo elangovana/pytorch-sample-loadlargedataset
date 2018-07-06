@@ -21,9 +21,10 @@ phases:
       - mkdir buildoutput
     # The requirements build for production
       - pip install -r source/requirements_prod.txt  -t source
-      - cd source && zip -r ../buildoutput/pytorchzip_deployment_package.zip . && cd ..
+      - cd source && zip -r ../buildoutput/pytorchzip_deployment_package.zip . -x test* && cd ..
+
 
 artifacts:
   files:
     - '**/*'
-base-directory: buildoutput
+  base-directory: buildoutput
