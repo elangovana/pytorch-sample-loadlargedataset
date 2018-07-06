@@ -20,7 +20,7 @@ phases:
       - echo creating package
       - mkdir buildoutput
       - pip install -r source/requirements_prod.txt  -t source
-      - cd custom_chainer && zip -r ../buildoutput/pytorchzip_deployment_package.zip . && cd ..
+      - cd source && zip -r ../buildoutput/pytorchzip_deployment_package.zip . && cd ..
 
 artifacts:
   files:
