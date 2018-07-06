@@ -1,0 +1,28 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - apt-get update
+      - apt-get install zip
+  pre_build:
+    commands:
+      - pip install pytest
+  build:
+    commands:
+      # Build and run tests
+      - pip install -r source/requirements_dev.txt
+      - pytest
+
+  post_build:
+    commands:
+    # Create the build package
+      - echo creating package
+      - mkdir buildoutput
+      - pip install -r source/requirements_prod.txt  -t source
+      - cd custom_chainer && zip -r ../buildoutput/pytorchzip_deployment_package.zip . && cd ..
+
+artifacts:
+  files:
+    - '**/*'
+base-directory: buildoutput
