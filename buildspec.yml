@@ -20,8 +20,8 @@ phases:
       - echo creating package
       - mkdir buildoutput
     # The requirements build for production
-      - pip install -r source/requirements_prod.txt  -t source
-      - cd source && zip -r ../buildoutput/pytorchzip_deployment_package.zip . -x test* && cd ..
+      - pip install -r source/requirements_lambda.txt  -t source
+      - cd source && zip -r ../buildoutput/pytorchzip_lambda_deployment_package.zip . -x test* && cd ..
 
 
 artifacts:
